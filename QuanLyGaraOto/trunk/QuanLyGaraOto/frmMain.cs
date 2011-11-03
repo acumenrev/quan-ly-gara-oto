@@ -54,9 +54,7 @@ namespace QuanLyGaraOto
 
         private void btnThayDoiMatKhau_Click(object sender, EventArgs e)
         {
-            Form1 frm = new Form1();
-            frm.MdiParent = this;
-            frm.Show();
+            
         }
 
        
