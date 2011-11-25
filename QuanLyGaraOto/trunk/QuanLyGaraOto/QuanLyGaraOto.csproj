@@ -51,16 +51,151 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formBaoCao\frmBaoCaoDoanhSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formBaoCao\frmBaoCaoDoanhSo.Designer.cs">
+      <DependentUpon>frmBaoCaoDoanhSo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formBaoCao\frmBaoCaoTon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formBaoCao\frmBaoCaoTon.Designer.cs">
+      <DependentUpon>frmBaoCaoTon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCSDL\frmHieuXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCSDL\frmHieuXe.Designer.cs">
+      <DependentUpon>frmHieuXe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCSDL\frmTienCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCSDL\frmTienCong.Designer.cs">
+      <DependentUpon>frmTienCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCSDL\frmVatTuPhuTung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCSDL\frmVatTuPhuTung.Designer.cs">
+      <DependentUpon>frmVatTuPhuTung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formCSDL\frmXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCSDL\frmXe.Designer.cs">
+      <DependentUpon>frmXe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formHeThong\frmCauHinhLaiCSDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formHeThong\frmCauHinhLaiCSDL.Designer.cs">
+      <DependentUpon>frmCauHinhLaiCSDL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formHeThong\frmThayDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formHeThong\frmThayDoiMatKhau.Designer.cs">
+      <DependentUpon>frmThayDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formHeThong\frmThongTinNguoiSuDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formHeThong\frmThongTinNguoiSuDung.Designer.cs">
+      <DependentUpon>frmThongTinNguoiSuDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuNhanXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuNhanXe.Designer.cs">
+      <DependentUpon>frmPhieuNhanXe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuNhapVTPT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuNhapVTPT.Designer.cs">
+      <DependentUpon>frmPhieuNhapVTPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuSuaChua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuSuaChua.Designer.cs">
+      <DependentUpon>frmPhieuSuaChua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuThuTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLapPhieu\frmPhieuThuTien.Designer.cs">
+      <DependentUpon>frmPhieuThuTien.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmServer.Designer.cs">
+      <DependentUpon>frmServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongTinChuongTrinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongTinChuongTrinh.Designer.cs">
+      <DependentUpon>frmThongTinChuongTrinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formBaoCao\frmBaoCaoDoanhSo.resx">
+      <DependentUpon>frmBaoCaoDoanhSo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formBaoCao\frmBaoCaoTon.resx">
+      <DependentUpon>frmBaoCaoTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCSDL\frmHieuXe.resx">
+      <DependentUpon>frmHieuXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCSDL\frmTienCong.resx">
+      <DependentUpon>frmTienCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCSDL\frmVatTuPhuTung.resx">
+      <DependentUpon>frmVatTuPhuTung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCSDL\frmXe.resx">
+      <DependentUpon>frmXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formHeThong\frmCauHinhLaiCSDL.resx">
+      <DependentUpon>frmCauHinhLaiCSDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formHeThong\frmThayDoiMatKhau.resx">
+      <DependentUpon>frmThayDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formHeThong\frmThongTinNguoiSuDung.resx">
+      <DependentUpon>frmThongTinNguoiSuDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLapPhieu\frmPhieuNhanXe.resx">
+      <DependentUpon>frmPhieuNhanXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLapPhieu\frmPhieuNhapVTPT.resx">
+      <DependentUpon>frmPhieuNhapVTPT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLapPhieu\frmPhieuSuaChua.resx">
+      <DependentUpon>frmPhieuSuaChua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLapPhieu\frmPhieuThuTien.resx">
+      <DependentUpon>frmPhieuThuTien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmServer.resx">
+      <DependentUpon>frmServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongTinChuongTrinh.resx">
+      <DependentUpon>frmThongTinChuongTrinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,12 +216,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="formBaoCao\" />
-    <Folder Include="formCSDL\" />
-    <Folder Include="formHeThong\" />
-    <Folder Include="formLapPhieu\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
