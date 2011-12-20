@@ -1,7 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.IO;
+using System.Data.Sql;
+using System.Xml;
 
 namespace QuanLyGaraOto
 {
@@ -13,6 +21,7 @@ namespace QuanLyGaraOto
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmServer());

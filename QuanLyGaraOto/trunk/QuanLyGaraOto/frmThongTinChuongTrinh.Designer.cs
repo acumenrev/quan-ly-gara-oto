@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongTinChuongTrinh));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picBoxIcon = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTenChuongTrinh = new System.Windows.Forms.TextBox();
+            this.txtPhienBan = new System.Windows.Forms.TextBox();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
             this.btnThoat = new DevComponents.DotNetBar.ButtonX();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // picBoxIcon
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(265, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(65, 67);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picBoxIcon.Image = ((System.Drawing.Image)(resources.GetObject("picBoxIcon.Image")));
+            this.picBoxIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("picBoxIcon.InitialImage")));
+            this.picBoxIcon.Location = new System.Drawing.Point(265, 9);
+            this.picBoxIcon.Name = "picBoxIcon";
+            this.picBoxIcon.Size = new System.Drawing.Size(65, 67);
+            this.picBoxIcon.TabIndex = 0;
+            this.picBoxIcon.TabStop = false;
             // 
             // label1
             // 
@@ -77,33 +77,33 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Ghi chú";
             // 
-            // textBox1
+            // txtTenChuongTrinh
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "Quản lý gara ôtô";
+            this.txtTenChuongTrinh.Location = new System.Drawing.Point(106, 6);
+            this.txtTenChuongTrinh.Name = "txtTenChuongTrinh";
+            this.txtTenChuongTrinh.ReadOnly = true;
+            this.txtTenChuongTrinh.Size = new System.Drawing.Size(100, 20);
+            this.txtTenChuongTrinh.TabIndex = 4;
+            this.txtTenChuongTrinh.Text = "Quản lý gara ôtô";
             // 
-            // textBox2
+            // txtPhienBan
             // 
-            this.textBox2.Location = new System.Drawing.Point(106, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "1.0";
+            this.txtPhienBan.Location = new System.Drawing.Point(106, 45);
+            this.txtPhienBan.Name = "txtPhienBan";
+            this.txtPhienBan.ReadOnly = true;
+            this.txtPhienBan.Size = new System.Drawing.Size(100, 20);
+            this.txtPhienBan.TabIndex = 5;
+            this.txtPhienBan.Text = "1.0";
             // 
-            // textBox3
+            // txtGhiChu
             // 
-            this.textBox3.Location = new System.Drawing.Point(106, 92);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(224, 93);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.Text = "Đồ án môn học Nhập môn công nghệ phần mềm\r\nThực hiện:\r\n- 09520319 - Võ Minh Trí\r\n" +
+            this.txtGhiChu.Location = new System.Drawing.Point(106, 92);
+            this.txtGhiChu.Multiline = true;
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.ReadOnly = true;
+            this.txtGhiChu.Size = new System.Drawing.Size(224, 93);
+            this.txtGhiChu.TabIndex = 6;
+            this.txtGhiChu.Text = "Đồ án môn học Nhập môn công nghệ phần mềm\r\nThực hiện:\r\n- 09520319 - Võ Minh Trí\r\n" +
     "- 09520326 - Trịnh Hồng Trường\r\n";
             // 
             // btnThoat
@@ -123,13 +123,13 @@
             this.ClientSize = new System.Drawing.Size(362, 247);
             this.ControlBox = false;
             this.Controls.Add(this.btnThoat);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtGhiChu);
+            this.Controls.Add(this.txtPhienBan);
+            this.Controls.Add(this.txtTenChuongTrinh);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picBoxIcon);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(378, 285);
@@ -137,7 +137,7 @@
             this.Name = "frmThongTinChuongTrinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thông tin chương trình";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,13 +145,13 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picBoxIcon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTenChuongTrinh;
+        private System.Windows.Forms.TextBox txtPhienBan;
+        private System.Windows.Forms.TextBox txtGhiChu;
         private DevComponents.DotNetBar.ButtonX btnThoat;
     }
 }

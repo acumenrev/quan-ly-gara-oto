@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmXe));
             this.btnTim = new DevComponents.DotNetBar.ButtonX();
@@ -35,10 +36,22 @@
             this.dtpTimTuNgay = new System.Windows.Forms.DateTimePicker();
             this.lbDen = new System.Windows.Forms.Label();
             this.lbTu = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnSuaCSDL = new DevComponents.DotNetBar.ButtonX();
             this.btnXoaCSDL = new DevComponents.DotNetBar.ButtonX();
+            this.hIEUXEsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gARA1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gARA1DataSet = new QuanLyGaraOto.GARA1DataSet();
+            this.dgvTim = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.txtTim = new System.Windows.Forms.TextBox();
+            this.cbbTim = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtTienNo = new System.Windows.Forms.TextBox();
+            this.hIEUXEsTableAdapter = new QuanLyGaraOto.GARA1DataSetTableAdapters.HIEUXEsTableAdapter();
+            this.txtTienNoTu = new System.Windows.Forms.TextBox();
+            this.txtTienNoDen = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.dtpNgayTiepNhan = new System.Windows.Forms.DateTimePicker();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -51,11 +64,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtTenChuXe = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvTim = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.txtTim = new System.Windows.Forms.TextBox();
-            this.cbbTim = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnInPhieu = new DevComponents.DotNetBar.ButtonX();
+            this.btnThoat = new DevComponents.DotNetBar.ButtonX();
+            ((System.ComponentModel.ISupportInitialize)(this.hIEUXEsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTim)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,8 +79,9 @@
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(75, 23);
             this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnTim.TabIndex = 65;
+            this.btnTim.TabIndex = 4;
             this.btnTim.Text = "Tìm";
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // dtpTimDenNgay
             // 
@@ -76,7 +89,7 @@
             this.dtpTimDenNgay.Location = new System.Drawing.Point(346, 7);
             this.dtpTimDenNgay.Name = "dtpTimDenNgay";
             this.dtpTimDenNgay.Size = new System.Drawing.Size(100, 20);
-            this.dtpTimDenNgay.TabIndex = 64;
+            this.dtpTimDenNgay.TabIndex = 3;
             this.dtpTimDenNgay.ValueChanged += new System.EventHandler(this.dtpTimDenNgay_ValueChanged);
             // 
             // dtpTimTuNgay
@@ -85,7 +98,7 @@
             this.dtpTimTuNgay.Location = new System.Drawing.Point(206, 7);
             this.dtpTimTuNgay.Name = "dtpTimTuNgay";
             this.dtpTimTuNgay.Size = new System.Drawing.Size(100, 20);
-            this.dtpTimTuNgay.TabIndex = 63;
+            this.dtpTimTuNgay.TabIndex = 2;
             this.dtpTimTuNgay.ValueChanged += new System.EventHandler(this.dtpTimTuNgay_ValueChanged);
             // 
             // lbDen
@@ -106,160 +119,46 @@
             this.lbTu.TabIndex = 61;
             this.lbTu.Text = "Từ";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtEmail.Location = new System.Drawing.Point(264, 205);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail.TabIndex = 60;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(203, 208);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 59;
-            this.label8.Text = "Email";
-            // 
             // btnSuaCSDL
             // 
             this.btnSuaCSDL.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSuaCSDL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSuaCSDL.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSuaCSDL.Location = new System.Drawing.Point(301, 327);
+            this.btnSuaCSDL.Location = new System.Drawing.Point(221, 328);
             this.btnSuaCSDL.Name = "btnSuaCSDL";
             this.btnSuaCSDL.Size = new System.Drawing.Size(75, 38);
             this.btnSuaCSDL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSuaCSDL.TabIndex = 57;
+            this.btnSuaCSDL.TabIndex = 15;
             this.btnSuaCSDL.Text = "Sửa";
+            this.btnSuaCSDL.Click += new System.EventHandler(this.btnSuaCSDL_Click);
             // 
             // btnXoaCSDL
             // 
             this.btnXoaCSDL.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnXoaCSDL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnXoaCSDL.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnXoaCSDL.Location = new System.Drawing.Point(197, 327);
+            this.btnXoaCSDL.Location = new System.Drawing.Point(140, 328);
             this.btnXoaCSDL.Name = "btnXoaCSDL";
             this.btnXoaCSDL.Size = new System.Drawing.Size(75, 38);
             this.btnXoaCSDL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnXoaCSDL.TabIndex = 56;
+            this.btnXoaCSDL.TabIndex = 14;
             this.btnXoaCSDL.Text = "Xóa";
+            this.btnXoaCSDL.Click += new System.EventHandler(this.btnXoaCSDL_Click);
             // 
-            // dtpNgayTiepNhan
+            // hIEUXEsBindingSource
             // 
-            this.dtpNgayTiepNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpNgayTiepNhan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgayTiepNhan.Location = new System.Drawing.Point(97, 287);
-            this.dtpNgayTiepNhan.Name = "dtpNgayTiepNhan";
-            this.dtpNgayTiepNhan.Size = new System.Drawing.Size(100, 20);
-            this.dtpNgayTiepNhan.TabIndex = 53;
-            this.dtpNgayTiepNhan.ValueChanged += new System.EventHandler(this.dtpNgayTiepNhan_ValueChanged);
+            this.hIEUXEsBindingSource.DataMember = "HIEUXEs";
+            this.hIEUXEsBindingSource.DataSource = this.gARA1DataSetBindingSource;
             // 
-            // txtDienThoai
+            // gARA1DataSetBindingSource
             // 
-            this.txtDienThoai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDienThoai.Location = new System.Drawing.Point(264, 254);
-            this.txtDienThoai.Name = "txtDienThoai";
-            this.txtDienThoai.Size = new System.Drawing.Size(100, 20);
-            this.txtDienThoai.TabIndex = 52;
-            this.txtDienThoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDienThoai_KeyPress);
+            this.gARA1DataSetBindingSource.DataSource = this.gARA1DataSet;
+            this.gARA1DataSetBindingSource.Position = 0;
             // 
-            // txtDiaChi
+            // gARA1DataSet
             // 
-            this.txtDiaChi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDiaChi.Location = new System.Drawing.Point(97, 255);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(100, 20);
-            this.txtDiaChi.TabIndex = 51;
-            // 
-            // cbbHieuXe
-            // 
-            this.cbbHieuXe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbbHieuXe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbHieuXe.FormattingEnabled = true;
-            this.cbbHieuXe.Location = new System.Drawing.Point(97, 228);
-            this.cbbHieuXe.Name = "cbbHieuXe";
-            this.cbbHieuXe.Size = new System.Drawing.Size(100, 21);
-            this.cbbHieuXe.TabIndex = 50;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 287);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
-            this.label7.TabIndex = 49;
-            this.label7.Text = "Ngày tiếp nhận";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(203, 258);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 48;
-            this.label6.Text = "Điện thoại";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 258);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 47;
-            this.label5.Text = "Địa chỉ";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 231);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 46;
-            this.label4.Text = "Hiệu xe";
-            // 
-            // txtBienSo
-            // 
-            this.txtBienSo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtBienSo.Location = new System.Drawing.Point(264, 228);
-            this.txtBienSo.Name = "txtBienSo";
-            this.txtBienSo.Size = new System.Drawing.Size(100, 20);
-            this.txtBienSo.TabIndex = 45;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(203, 231);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 44;
-            this.label3.Text = "Biển số";
-            // 
-            // txtTenChuXe
-            // 
-            this.txtTenChuXe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTenChuXe.Location = new System.Drawing.Point(97, 205);
-            this.txtTenChuXe.Name = "txtTenChuXe";
-            this.txtTenChuXe.Size = new System.Drawing.Size(100, 20);
-            this.txtTenChuXe.TabIndex = 43;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 208);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Tên chủ xe";
+            this.gARA1DataSet.DataSetName = "GARA1DataSet";
+            this.gARA1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dgvTim
             // 
@@ -277,16 +176,21 @@
             this.dgvTim.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTim.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvTim.Location = new System.Drawing.Point(15, 33);
+            this.dgvTim.MultiSelect = false;
             this.dgvTim.Name = "dgvTim";
+            this.dgvTim.ReadOnly = true;
+            this.dgvTim.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTim.Size = new System.Drawing.Size(548, 158);
             this.dgvTim.TabIndex = 41;
+            this.dgvTim.SelectionChanged += new System.EventHandler(this.dgvTim_SelectionChanged);
             // 
             // txtTim
             // 
             this.txtTim.Location = new System.Drawing.Point(172, 7);
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(376, 20);
-            this.txtTim.TabIndex = 40;
+            this.txtTim.TabIndex = 1;
+            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
             // 
             // cbbTim
             // 
@@ -301,7 +205,7 @@
             this.cbbTim.Location = new System.Drawing.Point(66, 6);
             this.cbbTim.Name = "cbbTim";
             this.cbbTim.Size = new System.Drawing.Size(100, 21);
-            this.cbbTim.TabIndex = 39;
+            this.cbbTim.TabIndex = 0;
             this.cbbTim.SelectedIndexChanged += new System.EventHandler(this.cbbTim_SelectedIndexChanged);
             // 
             // label1
@@ -313,31 +217,196 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Tìm theo";
             // 
-            // btnInPhieu
+            // label9
             // 
-            this.btnInPhieu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnInPhieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnInPhieu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInPhieu.Location = new System.Drawing.Point(97, 327);
-            this.btnInPhieu.Name = "btnInPhieu";
-            this.btnInPhieu.Size = new System.Drawing.Size(75, 38);
-            this.btnInPhieu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnInPhieu.TabIndex = 54;
-            this.btnInPhieu.Text = "In phiếu";
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(202, 280);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 66;
+            this.label9.Text = "Tiền nợ";
+            // 
+            // txtTienNo
+            // 
+            this.txtTienNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTienNo.Location = new System.Drawing.Point(263, 276);
+            this.txtTienNo.Name = "txtTienNo";
+            this.txtTienNo.Size = new System.Drawing.Size(100, 20);
+            this.txtTienNo.TabIndex = 12;
+            // 
+            // hIEUXEsTableAdapter
+            // 
+            this.hIEUXEsTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtTienNoTu
+            // 
+            this.txtTienNoTu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTienNoTu.Location = new System.Drawing.Point(206, 7);
+            this.txtTienNoTu.Name = "txtTienNoTu";
+            this.txtTienNoTu.Size = new System.Drawing.Size(100, 20);
+            this.txtTienNoTu.TabIndex = 2;
+            // 
+            // txtTienNoDen
+            // 
+            this.txtTienNoDen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTienNoDen.Location = new System.Drawing.Point(346, 7);
+            this.txtTienNoDen.Name = "txtTienNoDen";
+            this.txtTienNoDen.Size = new System.Drawing.Size(100, 20);
+            this.txtTienNoDen.TabIndex = 3;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtEmail.Location = new System.Drawing.Point(263, 250);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(202, 253);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 80;
+            this.label8.Text = "Email";
+            // 
+            // dtpNgayTiepNhan
+            // 
+            this.dtpNgayTiepNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpNgayTiepNhan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgayTiepNhan.Location = new System.Drawing.Point(98, 250);
+            this.dtpNgayTiepNhan.Name = "dtpNgayTiepNhan";
+            this.dtpNgayTiepNhan.Size = new System.Drawing.Size(100, 20);
+            this.dtpNgayTiepNhan.TabIndex = 9;
+            // 
+            // txtDienThoai
+            // 
+            this.txtDienThoai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtDienThoai.Location = new System.Drawing.Point(98, 277);
+            this.txtDienThoai.Name = "txtDienThoai";
+            this.txtDienThoai.Size = new System.Drawing.Size(100, 20);
+            this.txtDienThoai.TabIndex = 11;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtDiaChi.Location = new System.Drawing.Point(263, 225);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(100, 20);
+            this.txtDiaChi.TabIndex = 8;
+            // 
+            // cbbHieuXe
+            // 
+            this.cbbHieuXe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbbHieuXe.DataSource = this.hIEUXEsBindingSource;
+            this.cbbHieuXe.DisplayMember = "HieuXe";
+            this.cbbHieuXe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbHieuXe.FormattingEnabled = true;
+            this.cbbHieuXe.Location = new System.Drawing.Point(96, 224);
+            this.cbbHieuXe.Name = "cbbHieuXe";
+            this.cbbHieuXe.Size = new System.Drawing.Size(100, 21);
+            this.cbbHieuXe.TabIndex = 7;
+            this.cbbHieuXe.ValueMember = "HieuXe";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 253);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.TabIndex = 78;
+            this.label7.Text = "Ngày tiếp nhận";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 280);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 77;
+            this.label6.Text = "Điện thoại";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(202, 228);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 74;
+            this.label5.Text = "Địa chỉ";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 72;
+            this.label4.Text = "Hiệu xe";
+            // 
+            // txtBienSo
+            // 
+            this.txtBienSo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtBienSo.Location = new System.Drawing.Point(96, 201);
+            this.txtBienSo.MaxLength = 10;
+            this.txtBienSo.Name = "txtBienSo";
+            this.txtBienSo.Size = new System.Drawing.Size(100, 20);
+            this.txtBienSo.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 204);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 69;
+            this.label3.Text = "Biển số";
+            // 
+            // txtTenChuXe
+            // 
+            this.txtTenChuXe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTenChuXe.Location = new System.Drawing.Point(263, 202);
+            this.txtTenChuXe.Name = "txtTenChuXe";
+            this.txtTenChuXe.Size = new System.Drawing.Size(100, 20);
+            this.txtTenChuXe.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(202, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 67;
+            this.label2.Text = "Tên chủ xe";
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnThoat.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnThoat.Location = new System.Drawing.Point(302, 328);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 38);
+            this.btnThoat.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnThoat.TabIndex = 81;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmXe
             // 
             this.ClientSize = new System.Drawing.Size(566, 378);
-            this.Controls.Add(this.btnTim);
-            this.Controls.Add(this.dtpTimDenNgay);
-            this.Controls.Add(this.dtpTimTuNgay);
-            this.Controls.Add(this.lbDen);
-            this.Controls.Add(this.lbTu);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnSuaCSDL);
-            this.Controls.Add(this.btnXoaCSDL);
-            this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.dtpNgayTiepNhan);
             this.Controls.Add(this.txtDienThoai);
             this.Controls.Add(this.txtDiaChi);
@@ -350,6 +419,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTenChuXe);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtTienNoDen);
+            this.Controls.Add(this.txtTienNoTu);
+            this.Controls.Add(this.txtTienNo);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btnTim);
+            this.Controls.Add(this.dtpTimDenNgay);
+            this.Controls.Add(this.dtpTimTuNgay);
+            this.Controls.Add(this.lbDen);
+            this.Controls.Add(this.lbTu);
+            this.Controls.Add(this.btnSuaCSDL);
+            this.Controls.Add(this.btnXoaCSDL);
             this.Controls.Add(this.dgvTim);
             this.Controls.Add(this.txtTim);
             this.Controls.Add(this.cbbTim);
@@ -360,6 +440,9 @@
             this.Name = "frmXe";
             this.Text = "Xe";
             this.Load += new System.EventHandler(this.frmXe_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.hIEUXEsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -373,10 +456,22 @@
         private System.Windows.Forms.DateTimePicker dtpTimTuNgay;
         private System.Windows.Forms.Label lbDen;
         private System.Windows.Forms.Label lbTu;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label8;
         private DevComponents.DotNetBar.ButtonX btnSuaCSDL;
         private DevComponents.DotNetBar.ButtonX btnXoaCSDL;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvTim;
+        private System.Windows.Forms.TextBox txtTim;
+        private System.Windows.Forms.ComboBox cbbTim;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtTienNo;
+        private System.Windows.Forms.BindingSource gARA1DataSetBindingSource;
+        private GARA1DataSet gARA1DataSet;
+        private System.Windows.Forms.BindingSource hIEUXEsBindingSource;
+        private GARA1DataSetTableAdapters.HIEUXEsTableAdapter hIEUXEsTableAdapter;
+        private System.Windows.Forms.TextBox txtTienNoTu;
+        private System.Windows.Forms.TextBox txtTienNoDen;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dtpNgayTiepNhan;
         private System.Windows.Forms.TextBox txtDienThoai;
         private System.Windows.Forms.TextBox txtDiaChi;
@@ -389,10 +484,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTenChuXe;
         private System.Windows.Forms.Label label2;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvTim;
-        private System.Windows.Forms.TextBox txtTim;
-        private System.Windows.Forms.ComboBox cbbTim;
-        private System.Windows.Forms.Label label1;
-        private DevComponents.DotNetBar.ButtonX btnInPhieu;
+        private DevComponents.DotNetBar.ButtonX btnThoat;
     }
 }
