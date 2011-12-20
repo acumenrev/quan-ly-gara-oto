@@ -36,7 +36,7 @@
             this.cbbTim = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.txtTienCong = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnThem = new DevComponents.DotNetBar.ButtonX();
@@ -47,6 +47,7 @@
             this.txtTu = new System.Windows.Forms.TextBox();
             this.txtDen = new System.Windows.Forms.TextBox();
             this.btnTim = new DevComponents.DotNetBar.ButtonX();
+            this.btnThoat = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTim)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +67,13 @@
             this.dgvTim.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTim.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvTim.Location = new System.Drawing.Point(15, 32);
+            this.dgvTim.MultiSelect = false;
             this.dgvTim.Name = "dgvTim";
+            this.dgvTim.ReadOnly = true;
+            this.dgvTim.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTim.Size = new System.Drawing.Size(456, 148);
             this.dgvTim.TabIndex = 51;
+            this.dgvTim.SelectionChanged += new System.EventHandler(this.dgvTim_SelectionChanged);
             // 
             // txtTim
             // 
@@ -76,6 +81,7 @@
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(302, 20);
             this.txtTim.TabIndex = 50;
+            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
             // 
             // label1
             // 
@@ -119,14 +125,14 @@
             this.label3.TabIndex = 54;
             this.label3.Text = "Tiền công";
             // 
-            // textBox1
+            // txtNoiDung
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(73, 196);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(398, 69);
-            this.textBox1.TabIndex = 55;
+            this.txtNoiDung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtNoiDung.Location = new System.Drawing.Point(73, 196);
+            this.txtNoiDung.Multiline = true;
+            this.txtNoiDung.Name = "txtNoiDung";
+            this.txtNoiDung.Size = new System.Drawing.Size(398, 69);
+            this.txtNoiDung.TabIndex = 55;
             // 
             // txtTienCong
             // 
@@ -158,6 +164,7 @@
             this.btnThem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnThem.TabIndex = 58;
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -170,6 +177,7 @@
             this.btnSua.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSua.TabIndex = 59;
             this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -182,6 +190,7 @@
             this.btnXoa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnXoa.TabIndex = 60;
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // lbTu
             // 
@@ -208,6 +217,7 @@
             this.txtTu.Size = new System.Drawing.Size(100, 20);
             this.txtTu.TabIndex = 63;
             this.txtTu.TextChanged += new System.EventHandler(this.txtTu_TextChanged);
+            this.txtTu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTu_KeyPress);
             // 
             // txtDen
             // 
@@ -215,6 +225,7 @@
             this.txtDen.Name = "txtDen";
             this.txtDen.Size = new System.Drawing.Size(100, 20);
             this.txtDen.TabIndex = 64;
+            this.txtDen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDen_KeyPress);
             // 
             // btnTim
             // 
@@ -226,10 +237,25 @@
             this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnTim.TabIndex = 65;
             this.btnTim.Text = "Tìm";
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnThoat.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnThoat.Location = new System.Drawing.Point(357, 297);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnThoat.TabIndex = 66;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmTienCong
             // 
             this.ClientSize = new System.Drawing.Size(520, 333);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnTim);
             this.Controls.Add(this.txtDen);
             this.Controls.Add(this.txtTu);
@@ -240,7 +266,7 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTienCong);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNoiDung);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbbTim);
@@ -267,7 +293,7 @@
         private System.Windows.Forms.ComboBox cbbTim;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNoiDung;
         private System.Windows.Forms.TextBox txtTienCong;
         private System.Windows.Forms.Label label4;
         private DevComponents.DotNetBar.ButtonX btnThem;
@@ -278,5 +304,6 @@
         private System.Windows.Forms.TextBox txtTu;
         private System.Windows.Forms.TextBox txtDen;
         private DevComponents.DotNetBar.ButtonX btnTim;
+        private DevComponents.DotNetBar.ButtonX btnThoat;
     }
 }

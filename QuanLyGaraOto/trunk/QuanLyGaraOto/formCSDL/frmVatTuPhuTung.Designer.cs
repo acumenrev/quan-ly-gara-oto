@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVatTuPhuTung));
             this.label1 = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtMaVTPT = new System.Windows.Forms.TextBox();
             this.txtTenVTPT = new System.Windows.Forms.TextBox();
             this.txtSoLuongTon = new System.Windows.Forms.TextBox();
             this.txtDonGiaNhap = new System.Windows.Forms.TextBox();
@@ -53,7 +53,16 @@
             this.txtTu = new System.Windows.Forms.TextBox();
             this.txtDen = new System.Windows.Forms.TextBox();
             this.btnTim = new DevComponents.DotNetBar.ButtonX();
+            this.btnThoat = new DevComponents.DotNetBar.ButtonX();
+            this.vATTUPHUTUNGsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gARA1DataSet = new QuanLyGaraOto.GARA1DataSet();
+            this.vATTUPHUTUNGsTableAdapter = new QuanLyGaraOto.GARA1DataSetTableAdapters.VATTUPHUTUNGsTableAdapter();
+            this.btnThem = new DevComponents.DotNetBar.ButtonX();
+            this.btnTaoMoi = new DevComponents.DotNetBar.ButtonX();
+            this.txtMaVTPT = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vATTUPHUTUNGsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -78,7 +87,7 @@
             this.cbbTim.Location = new System.Drawing.Point(75, 6);
             this.cbbTim.Name = "cbbTim";
             this.cbbTim.Size = new System.Drawing.Size(108, 21);
-            this.cbbTim.TabIndex = 1;
+            this.cbbTim.TabIndex = 0;
             this.cbbTim.SelectedIndexChanged += new System.EventHandler(this.cbbTim_SelectedIndexChanged);
             // 
             // txtTim
@@ -86,7 +95,8 @@
             this.txtTim.Location = new System.Drawing.Point(189, 7);
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(355, 20);
-            this.txtTim.TabIndex = 2;
+            this.txtTim.TabIndex = 1;
+            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
             // 
             // dgvTim
             // 
@@ -104,9 +114,13 @@
             this.dgvTim.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTim.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvTim.Location = new System.Drawing.Point(24, 33);
+            this.dgvTim.MultiSelect = false;
             this.dgvTim.Name = "dgvTim";
+            this.dgvTim.ReadOnly = true;
+            this.dgvTim.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTim.Size = new System.Drawing.Size(520, 174);
             this.dgvTim.TabIndex = 3;
+            this.dgvTim.SelectionChanged += new System.EventHandler(this.dgvTim_SelectionChanged);
             // 
             // label2
             // 
@@ -134,9 +148,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(21, 248);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Số lượng tồn";
+            this.label4.Text = "Số lượng";
             // 
             // label5
             // 
@@ -158,21 +172,13 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Đơn giá nhập";
             // 
-            // txtMaVTPT
-            // 
-            this.txtMaVTPT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtMaVTPT.Location = new System.Drawing.Point(138, 221);
-            this.txtMaVTPT.Name = "txtMaVTPT";
-            this.txtMaVTPT.Size = new System.Drawing.Size(100, 20);
-            this.txtMaVTPT.TabIndex = 9;
-            // 
             // txtTenVTPT
             // 
             this.txtTenVTPT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTenVTPT.Location = new System.Drawing.Point(351, 221);
             this.txtTenVTPT.Name = "txtTenVTPT";
             this.txtTenVTPT.Size = new System.Drawing.Size(100, 20);
-            this.txtTenVTPT.TabIndex = 10;
+            this.txtTenVTPT.TabIndex = 6;
             // 
             // txtSoLuongTon
             // 
@@ -180,7 +186,7 @@
             this.txtSoLuongTon.Location = new System.Drawing.Point(138, 245);
             this.txtSoLuongTon.Name = "txtSoLuongTon";
             this.txtSoLuongTon.Size = new System.Drawing.Size(100, 20);
-            this.txtSoLuongTon.TabIndex = 11;
+            this.txtSoLuongTon.TabIndex = 7;
             this.txtSoLuongTon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuongTon_KeyPress);
             // 
             // txtDonGiaNhap
@@ -189,7 +195,7 @@
             this.txtDonGiaNhap.Location = new System.Drawing.Point(351, 245);
             this.txtDonGiaNhap.Name = "txtDonGiaNhap";
             this.txtDonGiaNhap.Size = new System.Drawing.Size(100, 20);
-            this.txtDonGiaNhap.TabIndex = 12;
+            this.txtDonGiaNhap.TabIndex = 8;
             this.txtDonGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonGiaNhap_KeyPress);
             // 
             // txtDonGiaBan
@@ -198,7 +204,7 @@
             this.txtDonGiaBan.Location = new System.Drawing.Point(138, 271);
             this.txtDonGiaBan.Name = "txtDonGiaBan";
             this.txtDonGiaBan.Size = new System.Drawing.Size(100, 20);
-            this.txtDonGiaBan.TabIndex = 13;
+            this.txtDonGiaBan.TabIndex = 9;
             this.txtDonGiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonGiaBan_KeyPress);
             // 
             // label7
@@ -226,24 +232,26 @@
             this.btnSua.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSua.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSua.Location = new System.Drawing.Point(138, 306);
+            this.btnSua.Location = new System.Drawing.Point(219, 310);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSua.TabIndex = 16;
+            this.btnSua.TabIndex = 10;
             this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
             this.btnXoa.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnXoa.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnXoa.Location = new System.Drawing.Point(247, 306);
+            this.btnXoa.Location = new System.Drawing.Point(303, 310);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnXoa.TabIndex = 17;
+            this.btnXoa.TabIndex = 11;
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // lbTu
             // 
@@ -268,7 +276,7 @@
             this.txtTu.Location = new System.Drawing.Point(219, 7);
             this.txtTu.Name = "txtTu";
             this.txtTu.Size = new System.Drawing.Size(81, 20);
-            this.txtTu.TabIndex = 20;
+            this.txtTu.TabIndex = 2;
             this.txtTu.TextChanged += new System.EventHandler(this.txtTu_TextChanged);
             this.txtTu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTu_KeyPress);
             // 
@@ -277,7 +285,7 @@
             this.txtDen.Location = new System.Drawing.Point(351, 7);
             this.txtDen.Name = "txtDen";
             this.txtDen.Size = new System.Drawing.Size(81, 20);
-            this.txtDen.TabIndex = 21;
+            this.txtDen.TabIndex = 3;
             this.txtDen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDen_KeyPress);
             // 
             // btnTim
@@ -288,12 +296,78 @@
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(75, 23);
             this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnTim.TabIndex = 22;
+            this.btnTim.TabIndex = 4;
             this.btnTim.Text = "Tìm";
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnThoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnThoat.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnThoat.Location = new System.Drawing.Point(384, 310);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnThoat.TabIndex = 12;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // vATTUPHUTUNGsBindingSource
+            // 
+            this.vATTUPHUTUNGsBindingSource.DataMember = "VATTUPHUTUNGs";
+            this.vATTUPHUTUNGsBindingSource.DataSource = this.gARA1DataSet;
+            // 
+            // gARA1DataSet
+            // 
+            this.gARA1DataSet.DataSetName = "GARA1DataSet";
+            this.gARA1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vATTUPHUTUNGsTableAdapter
+            // 
+            this.vATTUPHUTUNGsTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnThem
+            // 
+            this.btnThem.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnThem.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnThem.Location = new System.Drawing.Point(138, 310);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnThem.TabIndex = 20;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnTaoMoi
+            // 
+            this.btnTaoMoi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTaoMoi.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnTaoMoi.Location = new System.Drawing.Point(351, 271);
+            this.btnTaoMoi.Name = "btnTaoMoi";
+            this.btnTaoMoi.Size = new System.Drawing.Size(75, 23);
+            this.btnTaoMoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnTaoMoi.TabIndex = 21;
+            this.btnTaoMoi.Text = "Tạo mới";
+            this.btnTaoMoi.Click += new System.EventHandler(this.btnTaoMoi_Click);
+            // 
+            // txtMaVTPT
+            // 
+            this.txtMaVTPT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtMaVTPT.Location = new System.Drawing.Point(138, 221);
+            this.txtMaVTPT.Name = "txtMaVTPT";
+            this.txtMaVTPT.Size = new System.Drawing.Size(100, 20);
+            this.txtMaVTPT.TabIndex = 22;
             // 
             // frmVatTuPhuTung
             // 
             this.ClientSize = new System.Drawing.Size(585, 335);
+            this.Controls.Add(this.txtMaVTPT);
+            this.Controls.Add(this.btnTaoMoi);
+            this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnTim);
             this.Controls.Add(this.txtDen);
             this.Controls.Add(this.txtTu);
@@ -307,7 +381,6 @@
             this.Controls.Add(this.txtDonGiaNhap);
             this.Controls.Add(this.txtSoLuongTon);
             this.Controls.Add(this.txtTenVTPT);
-            this.Controls.Add(this.txtMaVTPT);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -325,6 +398,8 @@
             this.Text = "Vật tư phụ tùng";
             this.Load += new System.EventHandler(this.frmVatTuPhuTung_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vATTUPHUTUNGsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,7 +416,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMaVTPT;
         private System.Windows.Forms.TextBox txtTenVTPT;
         private System.Windows.Forms.TextBox txtSoLuongTon;
         private System.Windows.Forms.TextBox txtDonGiaNhap;
@@ -355,5 +429,12 @@
         private System.Windows.Forms.TextBox txtTu;
         private System.Windows.Forms.TextBox txtDen;
         private DevComponents.DotNetBar.ButtonX btnTim;
+        private DevComponents.DotNetBar.ButtonX btnThoat;
+        private GARA1DataSet gARA1DataSet;
+        private System.Windows.Forms.BindingSource vATTUPHUTUNGsBindingSource;
+        private GARA1DataSetTableAdapters.VATTUPHUTUNGsTableAdapter vATTUPHUTUNGsTableAdapter;
+        private DevComponents.DotNetBar.ButtonX btnThem;
+        private DevComponents.DotNetBar.ButtonX btnTaoMoi;
+        private System.Windows.Forms.TextBox txtMaVTPT;
     }
 }

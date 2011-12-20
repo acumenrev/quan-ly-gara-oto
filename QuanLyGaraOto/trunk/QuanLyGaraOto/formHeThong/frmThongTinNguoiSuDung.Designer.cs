@@ -108,6 +108,7 @@
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(199, 20);
             this.txtSDT.TabIndex = 7;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // txtEmail
             // 
@@ -133,6 +134,7 @@
             this.btnLuu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLuu.TabIndex = 10;
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnThoat
             // 
@@ -148,7 +150,7 @@
             // 
             // frmThongTinNguoiSuDung
             // 
-            this.ClientSize = new System.Drawing.Size(364, 198);
+            this.ClientSize = new System.Drawing.Size(364, 220);
             this.ControlBox = false;
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnLuu);

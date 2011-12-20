@@ -43,8 +43,9 @@
             this.columnHeader2 = new DevComponents.AdvTree.ColumnHeader();
             this.cbbQuyen = new System.Windows.Forms.ComboBox();
             this.cbbServer = new System.Windows.Forms.ComboBox();
-            this.cbCSDL = new System.Windows.Forms.ComboBox();
+            this.cbbCSDL = new System.Windows.Forms.ComboBox();
             this.btnPhucHoiCSDL = new DevComponents.DotNetBar.ButtonX();
+            this.ofdPhucHoiCSDL = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -126,6 +127,7 @@
             this.btnKiemTraKetNoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnKiemTraKetNoi.TabIndex = 10;
             this.btnKiemTraKetNoi.Text = "Kiểm tra kết nối";
+            this.btnKiemTraKetNoi.Click += new System.EventHandler(this.btnKiemTraKetNoi_Click);
             // 
             // btnKetNoi
             // 
@@ -165,6 +167,7 @@
             // 
             // cbbQuyen
             // 
+            this.cbbQuyen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbQuyen.FormattingEnabled = true;
             this.cbbQuyen.Items.AddRange(new object[] {
             "Xác thực bằng Windows",
@@ -173,6 +176,7 @@
             this.cbbQuyen.Name = "cbbQuyen";
             this.cbbQuyen.Size = new System.Drawing.Size(186, 21);
             this.cbbQuyen.TabIndex = 13;
+            this.cbbQuyen.SelectedIndexChanged += new System.EventHandler(this.cbbQuyen_SelectedIndexChanged);
             // 
             // cbbServer
             // 
@@ -181,14 +185,17 @@
             this.cbbServer.Name = "cbbServer";
             this.cbbServer.Size = new System.Drawing.Size(186, 21);
             this.cbbServer.TabIndex = 14;
+            this.cbbServer.SelectedIndexChanged += new System.EventHandler(this.cbbServer_SelectedIndexChanged);
+            this.cbbServer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbbServer_KeyDown);
             // 
-            // cbCSDL
+            // cbbCSDL
             // 
-            this.cbCSDL.FormattingEnabled = true;
-            this.cbCSDL.Location = new System.Drawing.Point(103, 104);
-            this.cbCSDL.Name = "cbCSDL";
-            this.cbCSDL.Size = new System.Drawing.Size(186, 21);
-            this.cbCSDL.TabIndex = 15;
+            this.cbbCSDL.FormattingEnabled = true;
+            this.cbbCSDL.Location = new System.Drawing.Point(103, 104);
+            this.cbbCSDL.Name = "cbbCSDL";
+            this.cbbCSDL.Size = new System.Drawing.Size(186, 21);
+            this.cbbCSDL.TabIndex = 15;
+            this.cbbCSDL.SelectedIndexChanged += new System.EventHandler(this.cbbCSDL_SelectedIndexChanged);
             // 
             // btnPhucHoiCSDL
             // 
@@ -200,13 +207,13 @@
             this.btnPhucHoiCSDL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPhucHoiCSDL.TabIndex = 16;
             this.btnPhucHoiCSDL.Text = "Phục hồi cơ sở dữ liệu";
+            this.btnPhucHoiCSDL.Click += new System.EventHandler(this.btnPhucHoiCSDL_Click);
             // 
             // frmServer
             // 
-            this.ClientSize = new System.Drawing.Size(311, 287);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(301, 273);
             this.Controls.Add(this.btnPhucHoiCSDL);
-            this.Controls.Add(this.cbCSDL);
+            this.Controls.Add(this.cbbCSDL);
             this.Controls.Add(this.cbbServer);
             this.Controls.Add(this.cbbQuyen);
             this.Controls.Add(this.btnHuyBo);
@@ -220,13 +227,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(317, 311);
             this.MinimumSize = new System.Drawing.Size(317, 311);
             this.Name = "frmServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cấu hình hệ thống";
+            this.Text = "Cấu hình cơ sở dữ liệu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmServer_FormClosing);
+            this.Load += new System.EventHandler(this.frmServer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,7 +256,8 @@
         private DevComponents.AdvTree.ColumnHeader columnHeader2;
         private System.Windows.Forms.ComboBox cbbQuyen;
         private System.Windows.Forms.ComboBox cbbServer;
-        private System.Windows.Forms.ComboBox cbCSDL;
+        private System.Windows.Forms.ComboBox cbbCSDL;
         private DevComponents.DotNetBar.ButtonX btnPhucHoiCSDL;
+        private System.Windows.Forms.OpenFileDialog ofdPhucHoiCSDL;
     }
 }

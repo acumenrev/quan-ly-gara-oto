@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPhieuThuTien));
             this.label1 = new System.Windows.Forms.Label();
@@ -38,24 +39,30 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtMaPTT = new System.Windows.Forms.TextBox();
             this.cbbBienSoXe = new System.Windows.Forms.ComboBox();
+            this.xEsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gARA1DataSet = new QuanLyGaraOto.GARA1DataSet();
             this.dtpNgayThu = new System.Windows.Forms.DateTimePicker();
             this.txtSoTienThu = new System.Windows.Forms.TextBox();
             this.btnThoat = new DevComponents.DotNetBar.ButtonX();
             this.btnSuaCSDL = new DevComponents.DotNetBar.ButtonX();
             this.btnXoaCSDL = new DevComponents.DotNetBar.ButtonX();
             this.btnThemCSDL = new DevComponents.DotNetBar.ButtonX();
-            this.btnInPhieu = new DevComponents.DotNetBar.ButtonX();
+            this.btnXuatPhieu = new DevComponents.DotNetBar.ButtonX();
             this.lbTu = new System.Windows.Forms.Label();
             this.lbDen = new System.Windows.Forms.Label();
             this.dtpTimTuNgay = new System.Windows.Forms.DateTimePicker();
             this.dtpTimDenNgay = new System.Windows.Forms.DateTimePicker();
-            this.txtTimTuSoTien = new System.Windows.Forms.TextBox();
-            this.txtTimDenSoTien = new System.Windows.Forms.TextBox();
+            this.txtTimTu = new System.Windows.Forms.TextBox();
+            this.txtTimDen = new System.Windows.Forms.TextBox();
             this.btnTim = new DevComponents.DotNetBar.ButtonX();
             this.label6 = new System.Windows.Forms.Label();
+            this.xEsTableAdapter = new QuanLyGaraOto.GARA1DataSetTableAdapters.XEsTableAdapter();
+            this.btnTaoMoi = new DevComponents.DotNetBar.ButtonX();
+            this.txtMaPTT = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTim)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xEsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,6 +95,7 @@
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(360, 20);
             this.txtTim.TabIndex = 2;
+            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
             // 
             // dgvTim
             // 
@@ -105,9 +113,13 @@
             this.dgvTim.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTim.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvTim.Location = new System.Drawing.Point(15, 52);
+            this.dgvTim.MultiSelect = false;
             this.dgvTim.Name = "dgvTim";
+            this.dgvTim.ReadOnly = true;
+            this.dgvTim.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTim.Size = new System.Drawing.Size(538, 155);
             this.dgvTim.TabIndex = 3;
+            this.dgvTim.SelectionChanged += new System.EventHandler(this.dgvTim_SelectionChanged);
             // 
             // label2
             // 
@@ -149,23 +161,28 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Số tiền thu";
             // 
-            // txtMaPTT
-            // 
-            this.txtMaPTT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtMaPTT.Location = new System.Drawing.Point(107, 226);
-            this.txtMaPTT.Name = "txtMaPTT";
-            this.txtMaPTT.Size = new System.Drawing.Size(100, 20);
-            this.txtMaPTT.TabIndex = 8;
-            // 
             // cbbBienSoXe
             // 
             this.cbbBienSoXe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbbBienSoXe.DataSource = this.xEsBindingSource;
+            this.cbbBienSoXe.DisplayMember = "BienSoXe";
             this.cbbBienSoXe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbBienSoXe.FormattingEnabled = true;
             this.cbbBienSoXe.Location = new System.Drawing.Point(107, 256);
             this.cbbBienSoXe.Name = "cbbBienSoXe";
-            this.cbbBienSoXe.Size = new System.Drawing.Size(121, 21);
+            this.cbbBienSoXe.Size = new System.Drawing.Size(100, 21);
             this.cbbBienSoXe.TabIndex = 9;
+            this.cbbBienSoXe.ValueMember = "BienSoXe";
+            // 
+            // xEsBindingSource
+            // 
+            this.xEsBindingSource.DataMember = "XEs";
+            this.xEsBindingSource.DataSource = this.gARA1DataSet;
+            // 
+            // gARA1DataSet
+            // 
+            this.gARA1DataSet.DataSetName = "GARA1DataSet";
+            this.gARA1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dtpNgayThu
             // 
@@ -197,6 +214,7 @@
             this.btnThoat.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnThoat.TabIndex = 25;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnSuaCSDL
             // 
@@ -209,6 +227,7 @@
             this.btnSuaCSDL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSuaCSDL.TabIndex = 24;
             this.btnSuaCSDL.Text = "Sửa";
+            this.btnSuaCSDL.Click += new System.EventHandler(this.btnSuaCSDL_Click);
             // 
             // btnXoaCSDL
             // 
@@ -221,6 +240,7 @@
             this.btnXoaCSDL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnXoaCSDL.TabIndex = 23;
             this.btnXoaCSDL.Text = "Xóa";
+            this.btnXoaCSDL.Click += new System.EventHandler(this.btnXoaCSDL_Click);
             // 
             // btnThemCSDL
             // 
@@ -233,18 +253,19 @@
             this.btnThemCSDL.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnThemCSDL.TabIndex = 22;
             this.btnThemCSDL.Text = "Thêm";
+            this.btnThemCSDL.Click += new System.EventHandler(this.btnThemCSDL_Click);
             // 
-            // btnInPhieu
+            // btnXuatPhieu
             // 
-            this.btnInPhieu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnInPhieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnInPhieu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnInPhieu.Location = new System.Drawing.Point(15, 369);
-            this.btnInPhieu.Name = "btnInPhieu";
-            this.btnInPhieu.Size = new System.Drawing.Size(75, 38);
-            this.btnInPhieu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnInPhieu.TabIndex = 21;
-            this.btnInPhieu.Text = "In phiếu";
+            this.btnXuatPhieu.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnXuatPhieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnXuatPhieu.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnXuatPhieu.Location = new System.Drawing.Point(15, 369);
+            this.btnXuatPhieu.Name = "btnXuatPhieu";
+            this.btnXuatPhieu.Size = new System.Drawing.Size(75, 38);
+            this.btnXuatPhieu.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnXuatPhieu.TabIndex = 21;
+            this.btnXuatPhieu.Text = "Xuất phiếu";
             // 
             // lbTu
             // 
@@ -282,22 +303,22 @@
             this.dtpTimDenNgay.TabIndex = 29;
             this.dtpTimDenNgay.ValueChanged += new System.EventHandler(this.dtpTimDenNgay_ValueChanged);
             // 
-            // txtTimTuSoTien
+            // txtTimTu
             // 
-            this.txtTimTuSoTien.Location = new System.Drawing.Point(221, 25);
-            this.txtTimTuSoTien.Name = "txtTimTuSoTien";
-            this.txtTimTuSoTien.Size = new System.Drawing.Size(100, 20);
-            this.txtTimTuSoTien.TabIndex = 30;
-            this.txtTimTuSoTien.TextChanged += new System.EventHandler(this.txtTimTuSoTien_TextChanged);
-            this.txtTimTuSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimTuSoTien_KeyPress);
+            this.txtTimTu.Location = new System.Drawing.Point(219, 26);
+            this.txtTimTu.Name = "txtTimTu";
+            this.txtTimTu.Size = new System.Drawing.Size(100, 20);
+            this.txtTimTu.TabIndex = 30;
+            this.txtTimTu.TextChanged += new System.EventHandler(this.txtTimTuSoTien_TextChanged);
+            this.txtTimTu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimTuSoTien_KeyPress);
             // 
-            // txtTimDenSoTien
+            // txtTimDen
             // 
-            this.txtTimDenSoTien.Location = new System.Drawing.Point(360, 25);
-            this.txtTimDenSoTien.Name = "txtTimDenSoTien";
-            this.txtTimDenSoTien.Size = new System.Drawing.Size(100, 20);
-            this.txtTimDenSoTien.TabIndex = 31;
-            this.txtTimDenSoTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimDenSoTien_KeyPress);
+            this.txtTimDen.Location = new System.Drawing.Point(360, 26);
+            this.txtTimDen.Name = "txtTimDen";
+            this.txtTimDen.Size = new System.Drawing.Size(100, 20);
+            this.txtTimDen.TabIndex = 31;
+            this.txtTimDen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimDenSoTien_KeyPress);
             // 
             // btnTim
             // 
@@ -309,6 +330,7 @@
             this.btnTim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnTim.TabIndex = 32;
             this.btnTim.Text = "Tìm";
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // label6
             // 
@@ -320,13 +342,39 @@
             this.label6.TabIndex = 33;
             this.label6.Text = "VNĐ";
             // 
+            // xEsTableAdapter
+            // 
+            this.xEsTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnTaoMoi
+            // 
+            this.btnTaoMoi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTaoMoi.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnTaoMoi.Location = new System.Drawing.Point(330, 302);
+            this.btnTaoMoi.Name = "btnTaoMoi";
+            this.btnTaoMoi.Size = new System.Drawing.Size(75, 38);
+            this.btnTaoMoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnTaoMoi.TabIndex = 34;
+            this.btnTaoMoi.Text = "Tạo mới";
+            this.btnTaoMoi.Click += new System.EventHandler(this.btnTaoMoi_Click);
+            // 
+            // txtMaPTT
+            // 
+            this.txtMaPTT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtMaPTT.Location = new System.Drawing.Point(107, 226);
+            this.txtMaPTT.Name = "txtMaPTT";
+            this.txtMaPTT.Size = new System.Drawing.Size(100, 20);
+            this.txtMaPTT.TabIndex = 8;
+            // 
             // frmPhieuThuTien
             // 
             this.ClientSize = new System.Drawing.Size(565, 433);
+            this.Controls.Add(this.btnTaoMoi);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnTim);
-            this.Controls.Add(this.txtTimDenSoTien);
-            this.Controls.Add(this.txtTimTuSoTien);
+            this.Controls.Add(this.txtTimDen);
+            this.Controls.Add(this.txtTimTu);
             this.Controls.Add(this.dtpTimDenNgay);
             this.Controls.Add(this.dtpTimTuNgay);
             this.Controls.Add(this.lbDen);
@@ -335,7 +383,7 @@
             this.Controls.Add(this.btnSuaCSDL);
             this.Controls.Add(this.btnXoaCSDL);
             this.Controls.Add(this.btnThemCSDL);
-            this.Controls.Add(this.btnInPhieu);
+            this.Controls.Add(this.btnXuatPhieu);
             this.Controls.Add(this.txtSoTienThu);
             this.Controls.Add(this.dtpNgayThu);
             this.Controls.Add(this.cbbBienSoXe);
@@ -355,6 +403,8 @@
             this.Text = "Phiếu thu tiền";
             this.Load += new System.EventHandler(this.frmPhieuThuTien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTim)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xEsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gARA1DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,7 +420,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtMaPTT;
         private System.Windows.Forms.ComboBox cbbBienSoXe;
         private System.Windows.Forms.DateTimePicker dtpNgayThu;
         private System.Windows.Forms.TextBox txtSoTienThu;
@@ -378,14 +427,19 @@
         private DevComponents.DotNetBar.ButtonX btnSuaCSDL;
         private DevComponents.DotNetBar.ButtonX btnXoaCSDL;
         private DevComponents.DotNetBar.ButtonX btnThemCSDL;
-        private DevComponents.DotNetBar.ButtonX btnInPhieu;
+        private DevComponents.DotNetBar.ButtonX btnXuatPhieu;
         private System.Windows.Forms.Label lbTu;
         private System.Windows.Forms.Label lbDen;
         private System.Windows.Forms.DateTimePicker dtpTimTuNgay;
         private System.Windows.Forms.DateTimePicker dtpTimDenNgay;
-        private System.Windows.Forms.TextBox txtTimTuSoTien;
-        private System.Windows.Forms.TextBox txtTimDenSoTien;
+        private System.Windows.Forms.TextBox txtTimTu;
+        private System.Windows.Forms.TextBox txtTimDen;
         private DevComponents.DotNetBar.ButtonX btnTim;
         private System.Windows.Forms.Label label6;
+        private GARA1DataSet gARA1DataSet;
+        private System.Windows.Forms.BindingSource xEsBindingSource;
+        private GARA1DataSetTableAdapters.XEsTableAdapter xEsTableAdapter;
+        private DevComponents.DotNetBar.ButtonX btnTaoMoi;
+        private System.Windows.Forms.TextBox txtMaPTT;
     }
 }

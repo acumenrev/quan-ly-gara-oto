@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCauHinhLaiCSDL));
             this.columnHeader1 = new DevComponents.AdvTree.ColumnHeader();
-            this.cbCSDL = new System.Windows.Forms.ComboBox();
+            this.cbbCSDL = new System.Windows.Forms.ComboBox();
             this.cbbServer = new System.Windows.Forms.ComboBox();
             this.columnHeader2 = new DevComponents.AdvTree.ColumnHeader();
             this.cbbQuyen = new System.Windows.Forms.ComboBox();
@@ -52,13 +52,14 @@
             this.columnHeader1.Text = "Xác thực bằng Windows";
             this.columnHeader1.Width.Absolute = 150;
             // 
-            // cbCSDL
+            // cbbCSDL
             // 
-            this.cbCSDL.FormattingEnabled = true;
-            this.cbCSDL.Location = new System.Drawing.Point(95, 84);
-            this.cbCSDL.Name = "cbCSDL";
-            this.cbCSDL.Size = new System.Drawing.Size(186, 21);
-            this.cbCSDL.TabIndex = 29;
+            this.cbbCSDL.FormattingEnabled = true;
+            this.cbbCSDL.Location = new System.Drawing.Point(95, 84);
+            this.cbbCSDL.Name = "cbbCSDL";
+            this.cbbCSDL.Size = new System.Drawing.Size(186, 21);
+            this.cbbCSDL.TabIndex = 29;
+            this.cbbCSDL.SelectedIndexChanged += new System.EventHandler(this.cbbCSDL_SelectedIndexChanged);
             // 
             // cbbServer
             // 
@@ -67,6 +68,7 @@
             this.cbbServer.Name = "cbbServer";
             this.cbbServer.Size = new System.Drawing.Size(186, 21);
             this.cbbServer.TabIndex = 28;
+            this.cbbServer.SelectedIndexChanged += new System.EventHandler(this.cbbServer_SelectedIndexChanged);
             // 
             // columnHeader2
             // 
@@ -76,6 +78,7 @@
             // 
             // cbbQuyen
             // 
+            this.cbbQuyen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbQuyen.FormattingEnabled = true;
             this.cbbQuyen.Items.AddRange(new object[] {
             "Xác thực bằng Windows",
@@ -84,6 +87,7 @@
             this.cbbQuyen.Name = "cbbQuyen";
             this.cbbQuyen.Size = new System.Drawing.Size(186, 21);
             this.cbbQuyen.TabIndex = 27;
+            this.cbbQuyen.SelectedIndexChanged += new System.EventHandler(this.cbbQuyen_SelectedIndexChanged);
             // 
             // btnHuyBo
             // 
@@ -107,6 +111,7 @@
             this.btnLuuKetNoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLuuKetNoi.TabIndex = 25;
             this.btnLuuKetNoi.Text = "Lưu kết nối";
+            this.btnLuuKetNoi.Click += new System.EventHandler(this.btnLuuKetNoi_Click);
             // 
             // btnKiemTraKetNoi
             // 
@@ -118,6 +123,7 @@
             this.btnKiemTraKetNoi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnKiemTraKetNoi.TabIndex = 24;
             this.btnKiemTraKetNoi.Text = "Kiểm tra kết nối";
+            this.btnKiemTraKetNoi.Click += new System.EventHandler(this.btnKiemTraKetNoi_Click);
             // 
             // txtMatKhau
             // 
@@ -192,7 +198,7 @@
             // 
             this.ClientSize = new System.Drawing.Size(287, 248);
             this.ControlBox = false;
-            this.Controls.Add(this.cbCSDL);
+            this.Controls.Add(this.cbbCSDL);
             this.Controls.Add(this.cbbServer);
             this.Controls.Add(this.cbbQuyen);
             this.Controls.Add(this.btnHuyBo);
@@ -212,6 +218,7 @@
             this.Name = "frmCauHinhLaiCSDL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cấu hình cơ sở dữ liệu";
+            this.Load += new System.EventHandler(this.frmCauHinhLaiCSDL_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,7 +227,7 @@
         #endregion
 
         private DevComponents.AdvTree.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ComboBox cbCSDL;
+        private System.Windows.Forms.ComboBox cbbCSDL;
         private System.Windows.Forms.ComboBox cbbServer;
         private DevComponents.AdvTree.ColumnHeader columnHeader2;
         private System.Windows.Forms.ComboBox cbbQuyen;

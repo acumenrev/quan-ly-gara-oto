@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BLL">
+      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL">
+      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.3.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -93,11 +99,11 @@
     <Compile Include="formHeThong\frmCauHinhLaiCSDL.Designer.cs">
       <DependentUpon>frmCauHinhLaiCSDL.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHeThong\frmThayDoiMatKhau.cs">
+    <Compile Include="formHeThong\frmQuyDinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHeThong\frmThayDoiMatKhau.Designer.cs">
-      <DependentUpon>frmThayDoiMatKhau.cs</DependentUpon>
+    <Compile Include="formHeThong\frmQuyDinh.Designer.cs">
+      <DependentUpon>frmQuyDinh.cs</DependentUpon>
     </Compile>
     <Compile Include="formHeThong\frmThongTinNguoiSuDung.cs">
       <SubType>Form</SubType>
@@ -147,6 +153,11 @@
     <Compile Include="frmThongTinChuongTrinh.Designer.cs">
       <DependentUpon>frmThongTinChuongTrinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="GARA1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GARA1DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="formBaoCao\frmBaoCaoDoanhSo.resx">
@@ -170,8 +181,8 @@
     <EmbeddedResource Include="formHeThong\frmCauHinhLaiCSDL.resx">
       <DependentUpon>frmCauHinhLaiCSDL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHeThong\frmThayDoiMatKhau.resx">
-      <DependentUpon>frmThayDoiMatKhau.cs</DependentUpon>
+    <EmbeddedResource Include="formHeThong\frmQuyDinh.resx">
+      <DependentUpon>frmQuyDinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formHeThong\frmThongTinNguoiSuDung.resx">
       <DependentUpon>frmThongTinNguoiSuDung.cs</DependentUpon>
@@ -206,6 +217,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
+    <None Include="GARA1DataSet.xsc">
+      <DependentUpon>GARA1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GARA1DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GARA1DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GARA1DataSet.xss">
+      <DependentUpon>GARA1DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
