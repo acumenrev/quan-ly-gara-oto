@@ -10,6 +10,8 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Data.Sql;
 using System.Xml;
+using DAL;
+using BLL;
 
 using DevComponents.DotNetBar;
 
@@ -25,6 +27,9 @@ namespace QuanLyGaraOto
         public static string m_path;
         public static string m_pathWithFile;
         private XmlTextReader m_reader;
+        DataService dal;
+        SqlConnection m_conn;
+        SqlCommand m_cmd;
         #endregion
 
         #region Methods
@@ -53,8 +58,9 @@ namespace QuanLyGaraOto
             m_path = Path.Combine(m_myDocumentsPath, "GaraOto");
             m_pathWithFile = m_path + "\\GaraOtoConfig.xml";
             ReadFile(m_pathWithFile);
-            
-            
+            dal = new DataService();
+            m_cmd = new SqlCommand();
+            m_conn = dal.GetConnect();
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)
@@ -229,14 +235,62 @@ namespace QuanLyGaraOto
 
         private void btnPhucHoiCSDL_Click(object sender, EventArgs e)
         {
-            ofdPhucHoiCSDL.Filter = " Tập tin lưu trữ (*.bak)|*.bak| Tất cả (*.*) | *.*";
-            ofdPhucHoiCSDL.Title = "Chọn đường dẫn tập tin cần phục hồi";
-            ofdPhucHoiCSDL.DefaultExt = "*.bak";
-            ofdPhucHoiCSDL.FileName = "";
-            if (ofdPhucHoiCSDL.ShowDialog() == DialogResult)
+            try
             {
-
+                ofdPhucHoiCSDL.Filter = " Tập tin lưu trữ (*.bak)|*.bak| Tất cả (*.*) | *.*";
+                ofdPhucHoiCSDL.Title = "Chọn đường dẫn tập tin cần phục hồi";
+                ofdPhucHoiCSDL.DefaultExt = "*.bak";
+                ofdPhucHoiCSDL.FileName = "";
+                if (ofdPhucHoiCSDL.ShowDialog() == DialogResult.OK)
+                {
+                    string thongBao = "Cơ sở dữ liệu mới sẽ có tên trùng với tên file .bak.\n" +
+                                      "mà bạn vừa mới chọn. Bạn có muốn tiếp tục không ?";
+                    DialogResult msgBox = MessageBox.Show(thongBao, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (DialogResult.Yes == msgBox)
+                    {
+                        // thiết lập thông số cho SqlCommand
+                        dal.OpenConnection(m_conn);
+                        m_cmd = new SqlCommand("RestoreCSDL", m_conn);
+                        m_cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        // các đối số
+                        m_cmd.Parameters.Add("@TenDB", SqlDbType.VarChar).Value = LayTenDatabase(ofdPhucHoiCSDL.FileName);
+                        m_cmd.Parameters.Add("@DuongDan", SqlDbType.VarChar).Value = ofdPhucHoiCSDL.FileName;
+                        m_cmd.ExecuteNonQuery();
+                        MessageBox.Show("Đã phục hồi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                dal.CloseConnection(m_conn);
+            }
+        }
+
+        /// <summary>
+        /// Lấy tên CSDL
+        /// </summary>
+        private string LayTenDatabase(string path)
+        {
+            string tenDB = "";
+            char[] arr = path.ToCharArray();
+            int pos = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] == '\\')
+                {
+                    pos = i;
+                }
+            }
+            int viTriBatDau = pos + 1;
+            int viTriKetThuc = path.Length;
+            int soLuong = viTriKetThuc - pos;
+            int soLuongCanLay = soLuong - 5;
+            tenDB = path.Substring(viTriBatDau, soLuongCanLay);
+            return tenDB;
         }
 
         private void cbbCSDL_SelectedIndexChanged(object sender, EventArgs e)
