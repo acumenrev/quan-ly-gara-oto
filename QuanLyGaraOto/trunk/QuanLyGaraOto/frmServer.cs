@@ -30,6 +30,8 @@ namespace QuanLyGaraOto
         DataService dal;
         SqlConnection m_conn;
         SqlCommand m_cmd;
+        private string m_connString;
+
         #endregion
 
         #region Methods
@@ -58,9 +60,8 @@ namespace QuanLyGaraOto
             m_path = Path.Combine(m_myDocumentsPath, "GaraOto");
             m_pathWithFile = m_path + "\\GaraOtoConfig.xml";
             ReadFile(m_pathWithFile);
-            dal = new DataService();
             m_cmd = new SqlCommand();
-            m_conn = dal.GetConnect();
+            
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)
@@ -246,10 +247,14 @@ namespace QuanLyGaraOto
                     string thongBao = "Cơ sở dữ liệu mới sẽ có tên trùng với tên file .bak.\n" +
                                       "mà bạn vừa mới chọn. Bạn có muốn tiếp tục không ?";
                     DialogResult msgBox = MessageBox.Show(thongBao, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    m_conn = new SqlConnection(GetConnectString());
                     if (DialogResult.Yes == msgBox)
                     {
                         // thiết lập thông số cho SqlCommand
-                        dal.OpenConnection(m_conn);
+                        if (m_conn.State != ConnectionState.Open)
+                        {
+                            m_conn.Open();
+                        }
                         m_cmd = new SqlCommand("RestoreCSDL", m_conn);
                         m_cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         // các đối số
@@ -266,7 +271,10 @@ namespace QuanLyGaraOto
             }
             finally
             {
-                dal.CloseConnection(m_conn);
+                if (m_conn.State != ConnectionState.Closed)
+                {
+                    m_conn.Close();
+                }
             }
         }
 
@@ -437,6 +445,25 @@ namespace QuanLyGaraOto
                 cbbServer_SelectedIndexChanged(sender, e);
             }
         }
-        
+
+        public string GetConnectString()
+        {
+            string str = "";
+            if (txtTenTaiKhoan.Text.Trim() == "" && txtMatKhau.Text.Trim() == "")
+            {
+                str = "Data Source=" + cbbServer.Text + ";Initial Catalog=" +
+                    cbbCSDL.Text + ";Integrated Security=true;";
+            }
+            else
+            {
+                if (txtTenTaiKhoan.Text.Trim() != "" && txtMatKhau.Text.Trim() != "")
+                {
+                    str = "Data Source=" + cbbServer.Text + ";Initial Catalog=" +
+                         cbbCSDL.Text + ";User Id=" +
+                         txtTenTaiKhoan.Text + ";Password=" + txtMatKhau.Text + ";";
+                }
+            }
+            return str;
+        }
     }
 }
